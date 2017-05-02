@@ -1,0 +1,11 @@
+
+.game-content {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+
+  .game-canvas {
+    height: 100%;
+    width: 100%;
+  }
+}
