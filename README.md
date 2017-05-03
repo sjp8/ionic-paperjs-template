@@ -1,5 +1,5 @@
 # ionic-paperjs-template
-A blank ionic 2 project for [Paper.js](http://paperjs.org) programs.
+A blank [Ionic 2](http://ionic.io/2) project for [Paper.js](http://paperjs.org) programs.
 
 ### Your Game Logic
 To alter game logic, open `/src/logic/game.ts` and modify the `start` method. You can write your game in ES6 or regular javascript, and include other files as necessary.
