@@ -21,8 +21,43 @@ export class Game {
   /** Start the game. */
   start() {
     console.log('Starting the game.')
-    const screen = this.scope.view.viewSize
-    const rect = paper.Path.Rectangle(new paper.Point(0, 0), new paper.Point(screen.width, screen.height))
-    rect.fillColor = 'green'
+
+    var maxDistance = 50
+    var sizeRange = [3, 20]
+    var colors = [
+      'green', 'yellow', 'gray', 'pink', 'orange', 
+      'red', 'black', 'blue', 'lightblue', 'purple', 'brown'
+    ]
+
+    function randomIndex(length) {
+      return Math.floor(Math.random() * length)
+    }
+
+    function randomColor() {
+      return colors[randomIndex(colors.length)]
+    }
+
+    function drawRandomCirclesAtPoint(point, modifier) {
+      var color = randomColor()
+      var size = sizeRange[0] + randomIndex(sizeRange[1] - sizeRange[0])
+      var distance = randomIndex(maxDistance) * modifier
+      
+      var direction = Math.random() * Math.PI * 2
+      var location = new paper.Point(point.x + Math.cos(direction) * distance, point.y + Math.sin(direction) * distance)
+      var circle = paper.Path.Circle({
+          center: location,
+          radius: size * modifier
+      })
+      
+      circle.fillColor = color
+    }
+
+    function onMouseDrag(event) {
+      var modifier = Math.pow(event.delta.length, 2) / 400
+      drawRandomCirclesAtPoint(event.point, modifier)
+    }
+
+    var tool = new paper.Tool()
+    tool.onMouseDrag = onMouseDrag
   }
 }

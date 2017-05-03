@@ -4,7 +4,6 @@ import { NavController } from 'ionic-angular'
 import { PaperProvider } from '../../providers/paper'
 
 import { Game } from '../../logic/game'
-import * as paper from 'paper'
 
 @Component({
   selector: 'page-home',
